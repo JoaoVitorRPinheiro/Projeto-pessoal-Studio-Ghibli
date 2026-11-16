@@ -70,6 +70,10 @@
             <input id="senha_input" type="password" placeholder="******" />
           </div>
           <div class="campo">
+            <span>CPF:</span>
+            <input id="cpf_input" type="text" placeholder="******" />
+          </div>
+          <div class="campo">
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
           </div>
@@ -108,6 +112,7 @@
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
+    var cpfVar = cpf_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var codigoVar = codigo_input.value;
     var idEmpresaVincular
@@ -117,6 +122,7 @@
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
+      cpfVar == "" ||
       confirmacaoSenhaVar == "" ||
       codigoVar == ""
     ) {
@@ -154,6 +160,7 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
+        cpfServer: cpfVar,
         senhaServer: senhaVar,
         idEmpresaVincularServer: idEmpresaVincular
       }),
