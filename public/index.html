@@ -1,81 +1,264 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>AquaTech | Página Inicial</title>
-
-    <script src="./js/sessao.js"></script>
-
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="site.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Meu Ghibli</title>
 </head>
 
 <body>
-    <div class="header">
-      <div class="container">
-        <h1 class="titulo">AquaTech</h1>
-        <ul class="navbar">
-          <li class="agora">
-            <a href="#">Inicial</a>
-          </li>
-          <li>
-            <a href="simulador.html">Simulador</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="banner">
-      <div class="container">
-        <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
-      </div>
-    </div>
-  
-    <div class="social">
-      <div class="container">
-        <div class="boxes">
-          <div class="box">
-            <img src="assets/imgs/planet-earth_color.png">
-            <h4>Missão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/lightbulb_color.png">
-            <h4>Visão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/growth_color.png">
-            <h4>Valores</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
+
+    <!-- =====================================================
+         BARRA DE NAVEGAÇÃO (fica fixa no topo, em todas as páginas)
+         ===================================================== -->
+    <header class="header">
+
+        <section>
+            <!-- coluna 1: frase da esquerda -->
+            <p class="frase">A vida é uma luz <br> que pisca na escuridão</p>
+
+            <!-- coluna 2: menu (cada link leva até o id da página) -->
+            <nav>
+                <p><a href="#inicio">Home</a></p>
+                <p><a href="#sobre">O Studio</a></p>
+                <p><a href="#porque">Por que escolhi</a></p>
+                <p><a href="#como">Como me mudou</a></p>
+                <p><a href="#cenas">Cenas</a></p>
+            </nav>
+
+            <!-- coluna 3: botões do canto direito -->
+            <div class="botoes">
+                <a href="login.html" class="botao">Login</a>
+                <a href="cadastro.html" class="botao">Cadastro</a>
+            </div>
+        </section>
+
+
+    </header>
+
+    <!-- =====================================================
+         PÁGINA 1 - TELA INICIAL (id="inicio")
+         imagem do Totoro, seta que desce e pétalas caindo
+         ===================================================== -->
+    <section class="inicio" id="inicio">
+
+        <!-- seta que leva para a página 2 -->
+        <a class="desce" href="#sobre">↓</a>
+
+        <!-- pétalas: left = posição na horizontal, duration = velocidade, delay = quando começa -->
+        <span class="petala" style="left: 10%; animation-duration: 11s; animation-delay: -2s;"></span>
+        <span class="petala" style="left: 30%; animation-duration: 14s; animation-delay: -7s;"></span>
+        <span class="petala" style="left: 55%; animation-duration: 10s; animation-delay: -4s;"></span>
+        <span class="petala" style="left: 75%; animation-duration: 10s; animation-delay: -5s;"></span>
+
+
+    </section>
+
+    <!-- =====================================================
+         PÁGINA 2 - O QUE É O STUDIO GHIBLI (id="sobre")
+         título em cima; texto à esquerda e foto (.quadrado) à direita
+         ===================================================== -->
+    <section class="sobre" id="sobre">
+
+        <h2 class="sobre-titulo">O que é o Studio Ghibli</h2>
+
+        <div class="sobre-conteudo">
+
+            <div class="sobre-texto">
+                <p>O Studio Ghibli é um estúdio de animação japonês criado em 1985 por Hayao Miyazaki, Isao Takahata e
+                    Toshio Suzuki. O nome vem de uma palavra italiana que quer dizer vento quente do deserto, e a ideia
+                    era essa mesma levar um vento novo pra animação do Japão.</p>
+
+                <p>Os filmes falam de natureza, infância, voar e de uns bichos meio estranhos. Meu Amigo Totoro, A
+                    Viagem de Chihiro e O Castelo Animado são os mais conhecidos, e A Viagem de Chihiro até ganhou o
+                    Oscar de melhor animação.</p> <br>
+
+                <p class="sobre-citacao">Quase tudo é desenhado à mão, e dá pra perceber isso nos filmes.</p>
+            </div>
+
+            <div class="sobre-foto"></div>
+
         </div>
-      </div>
-    </div>
-  
-    <div class="footer">
-      <div class="container">
-        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023-2026</h4>
-      </div>
-    </div>
-  </body>
+
+    </section>
+
+    <!-- =====================================================
+         PÁGINA 3 - POR QUE ESCOLHI (id="porque")
+         ainda vazia: o texto e as fotos entram aqui
+         ===================================================== -->
+    <section class="porque" id="porque">
+
+        <h2 class="porque-titulo">Uma história que a criança entende, mas que ainda mexe com os adultos.</h2>
+
+        <div class="porque-conteudo">
+
+            <div class="porque-foto"></div>
+
+            <div class="porque-texto">
+
+                <p>Minha ligação com a cultura japonesa começou ainda criança. Eu era fascinado por animes, e foi o
+                    Naruto que abriu essa porta: eu via todos os dias no SBT, sem perder um episódio.
+
+                    Foi nessa época que, zapeando pelo Discovery Kids, eu vi um filme que me encantou logo de cara:
+                    Ponyo. Eu não fazia a menor ideia de onde ele vinha, era só uma criança que tinha gostado muito
+                    daquela história.</p>
+
+                <p>Só por volta dos 14 anos eu descobri o Studio Ghibli e entendi de onde aquele filme tinha saído.
+                    Desde então, não parei de acompanhar. Os filmes têm uma base emocional e cultural muito forte, e
+                    contam a história de um jeito que uma criança entende, mas que ainda mexe com os adultos. O
+                    principal motivo de eu gostar tanto é a profundidade que o Miyazaki traz para cada um deles.</p>
+                <br> <br>
+
+
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PÁGINA 4 - COMO ME MUDOU (id="como")
+         título e texto sobre como o Ghibli me mudou
+         ===================================================== -->
+    <section id="como" class="como">
+
+        <h2 class="como-titulo">Como o Ghibli mudou o meu jeito de ver o mundo.</h2>
+
+        <div class="como-conteudo">
+
+            <p>A principal coisa que essa série de filmes mudou na minha mente foi o jeito como eu vejo o mundo. O ritmo
+                da maioria deles é lento, com cenas de 20 segundos de uma pessoa cortando alimentos para comer. Mudou
+                também o quanto eu valorizo o tempo que temos em vida com as pessoas com quem vivemos todos os dias, e o
+                quanto é importante falar sobre esse sentimento para elas.</p>
+
+            <p>Isso eu só percebi depois que perdi a minha avó, com quem passei a minha infância inteira. No filme mais
+                recente do estúdio, O Menino e a Garça, o tio-avô do protagonista me lembrou exatamente da minha vó,
+                principalmente porque o filme trata de luto, fantasia e realidade. Ele me ajudou a superar a perda da
+                minha avó.</p>
+
+            <p class="como-citacao">Valorizar o tempo que temos com as pessoas do dia a dia, e dizer o que sentimos por
+                elas.</p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PÁGINA 5 - CENAS (id="cenas")
+         carrossel: o JavaScript no fim do arquivo troca as classes de cada cena
+         ===================================================== -->
+
+    <section class="cenas" id="cenas">
+
+        <!-- linha de cima: título e setas -->
+        <div class="cenas-topo">
+            <h2 class="cenas-titulo">Cenas que ficaram comigo</h2>
+            <div class="setas">
+                <button id="ant">←</button>
+                <button id="prox">→</button>
+            </div>
+        </div>
+
+        <!-- as cenas (cada <div class="cena"> é uma; a imagem fica no style) -->
+        <div class="palco">
+            <div class="cena" style="background-image: url(assets/cena1.jpg)">Meu Amigo Totoro</div>
+            <div class="cena" style="background-image: url(assets/cena2.jpg)">Ponyo</div>
+            <div class="cena" style="background-image: url(assets/cena3.jpg)">O Castelo Animado</div>
+            <div class="cena" style="background-image: url(assets/cena4.jpg)">Princesa Mononoke</div>
+            <div class="cena" style="background-image: url(assets/cena5.jpg)">A Viagem de Chihiro</div>
+
+        </div>
+    </section>
+
+
+
+
+
+    <!-- =====================================================
+         TOTORO FLUTUANTE (fixo no canto, aparece em todas as páginas)
+         ===================================================== -->
+    <img class="personagem" src="assets/totoro azul escuro.svg" alt="Totoro">
+
+</body>
+
+
+<!-- =====================================================
+     JAVASCRIPT DO CARROSSEL (página 5)
+     ===================================================== -->
+<script>
+
+    // pega todas as cenas e guarda qual está no meio (atual = 2 é a terceira, a contagem começa no 0)
+    var cenas = document.querySelectorAll('.cena');
+    var atual = 2;
+
+    // dá a cada cena a classe certa: atual, esquerda, direita, esquerda2 ou direita2
+    function mostrar() {
+        for (var i = 0; i < cenas.length; i++) {
+            cenas[i].className = 'cena';
+
+            if (i == atual) {
+                cenas[i].className = 'cena atual';
+            }
+            if (i == atual - 1) {
+                cenas[i].className = 'cena esquerda';
+            }
+            if (i == atual + 1) {
+                cenas[i].className = 'cena direita';
+            }
+            if (i == atual - 2) {
+                cenas[i].className = 'cena esquerda2';
+            }
+            if (i == atual + 2) {
+                cenas[i].className = 'cena direita2';
+            }
+        }
+    }
+
+    // seta →: avança uma cena (se não for a última)
+    document.getElementById('prox').onclick = function () {
+        if (atual < cenas.length - 1) {
+            atual = atual + 1;
+            mostrar();
+        }
+    };
+
+    // seta ←: volta uma cena (se não for a primeira)
+    document.getElementById('ant').onclick = function () {
+        if (atual > 0) {
+            atual = atual - 1;
+            mostrar();
+        }
+    };
+
+    // roda uma vez ao abrir a página, para posicionar as cenas
+    mostrar();
+
+    var blocos = document.querySelectorAll('.sobre-titulo, .sobre-texto, .sobre-foto, .porque-titulo, .porque-foto, .porque-texto, .como-titulo, .como-conteudo, .cenas-topo');
+
+    var observador = new IntersectionObserver(function (itens) {
+        for (var i = 0; i < itens.length; i++) {
+            if (itens[i].isIntersecting) {
+                itens[i].target.classList.add('visivel');
+            }
+        }
+    }, { threshold: 0.15 });
+
+    for (var i = 0; i < blocos.length; i++) {
+        blocos[i].classList.add('aparece');
+        observador.observe(blocos[i]);
+    }
+
+</script>
 
 </html>

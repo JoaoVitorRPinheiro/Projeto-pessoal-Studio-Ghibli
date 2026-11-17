@@ -3,156 +3,119 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>AquaTech | Login</title>
-
-    <script src="./js/sessao.js"></script>
-
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <title>Meu Ghibli | Login</title>
+    <link rel="stylesheet" href="ghibli.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <!--Header-->
+    <header class="header">
 
-    <div class="header">
-        <div class="container">
-            <h1 class="titulo">AquaTech</h1>
-            <ul class="navbar">
-                <li>
-                    <a href="index.html">Inicial</a>
-                </li>
-                <li>
-                    <a href="simulador.html">Simulador</a>
-                </li>
-                <li>|</li>
-                <li class="agora">
-                    <a href="#">Login</a>
-                </li>
-                <li>
-                    <a href="cadastro.html">Cadastro</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+        <section>
+            <p class="frase">A vida é uma luz <br> que pisca na escuridão</p>
 
+            <nav>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="index.html#sobre">O Studio</a></p>
+                <p><a href="index.html#porque">Por que escolhi</a></p>
+                <p><a href="index.html#como">Como me mudou</a></p>
+                <p><a href="index.html#cenas">Cenas</a></p>
+            </nav>
 
-    <div class="login">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
+            <div class="botoes">
+                <a href="login.html" class="botao">Login</a>
+                <a href="cadastro.html" class="botao">Cadastro</a>
             </div>
+        </section>
+
+    </header>
+
+    <div class="petalas">
+        <span class="petala" style="left: 8%; animation-duration: 12s; animation-delay: -3s;"></span>
+        <span class="petala" style="left: 25%; animation-duration: 15s; animation-delay: -8s;"></span>
+        <span class="petala" style="left: 46%; animation-duration: 11s; animation-delay: -5s;"></span>
+        <span class="petala" style="left: 63%; animation-duration: 14s; animation-delay: -1s;"></span>
+        <span class="petala" style="left: 80%; animation-duration: 12s; animation-delay: -9s;"></span>
+        <span class="petala" style="left: 93%; animation-duration: 16s; animation-delay: -6s;"></span>
+    </div>
+
+    <div class="cartao">
+        <div class="imagem imagem-login">
+            
         </div>
-        <div class="container">
-            <div class="card card-login">
-                <h2>Olá de volta!</h2>
-                <div class="formulario">
-                    <div class="campo">
-                        <span>E-mail:</span>
-                        <input id="email_input" type="text" placeholder="Login">
-                    </div>
-                    <div class="campo">
-                        <span>Senha:</span>
-                        <input id="senha_input" type="password" placeholder="******">
-                    </div>
-                    <button class="botao" onclick="entrar()">Entrar</button>
-                </div>
 
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
-                </div>
+        <div class="formulario">
+            <h2>Seja bem-vindo</h2>
+            <p class="subtitulo">Entre para continuar a sua jornada pelo mundo do Ghibli.</p>
 
-                <div id="div_erros_login"></div>
-            </div>
+            <span class="input_div">E-mail</span>
+            <input id="email_input" type="text" placeholder="seuemail@exemplo.com">
+
+            <span class="input_div">Senha</span>
+            <input id="senha_input" type="password" placeholder="Sua senha">
+
+            <button onclick="entrar()">Entrar</button>
+
+            <div class="mensagem" id="mensagem"></div>
+
+            <p class="link">Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
         </div>
     </div>
 
-    <!--footer inicio-->
-    <div class="footer">
-        <div class="container">
-            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023-2026</h4>
-        </div>
-    </div>
-    <!--footer fim-->
+    <img class="personagem" src="assets/totoro azul escuro.svg" alt="Totoro">
+
+    <script>
+        function entrar() {
+            let emailVar = email_input.value;
+            let senhaVar = senha_input.value;
+
+            let campos = [emailVar, senhaVar];
+            let vazios = 0;
+
+            for (let i = 0; i < campos.length; i++) {
+                if (campos[i] == "") {
+                    vazios = vazios + 1;
+                }
+            }
+
+            if (vazios > 0) {
+                mensagem.innerHTML = "Preencha o e-mail e a senha.";
+            } else {
+                mensagem.innerHTML = "Entrando...";
+
+                fetch("/usuarios/autenticar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        emailServer: emailVar,
+                        senhaServer: senhaVar
+                    })
+                }).then(function (resposta) {
+                    if (resposta.ok) {
+                        resposta.json().then(function (json) {
+                            sessionStorage.ID_USUARIO = json.id;
+                            sessionStorage.NOME_USUARIO = json.nome;
+                            sessionStorage.EMAIL_USUARIO = json.email;
+
+                            mensagem.innerHTML = "Bem-vindo(a), " + json.nome + "!";
+                        });
+                    } else {
+                        resposta.text().then(function (texto) {
+                            mensagem.innerHTML = texto;
+                        });
+                    }
+                }).catch(function (erro) {
+                    console.log(erro);
+                    mensagem.innerHTML = "Não consegui falar com a API. Ela está ligada?";
+                });
+            }
+        }
+    </script>
 
 </body>
 
 </html>
-
-<script>
-
-
-    function entrar() {
-        aguardar();
-
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
-
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
-
-</script>

@@ -1,0 +1,319 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 130px 24px 60px;
+    font-family: 'Manrope', sans-serif;
+    color: white;
+    background-color: #111113;
+    background-image:
+        radial-gradient(circle at 18% 12%, rgba(31, 160, 212, 0.32), transparent 45%),
+        radial-gradient(circle at 88% 88%, rgba(27, 119, 140, 0.4), transparent 50%),
+        linear-gradient(#0b1b21, #111113);
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.header section {
+    background-color: #e8e8e8d3;
+    padding: 20px 30px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+}
+
+.header p {
+    font-size: 20px;
+    margin: 0;
+    text-align: left;
+    color: #0f4754;
+    font-family: fantasy;
+}
+
+.frase {
+    border-left: 3px solid #0f4754;
+    padding-left: 12px;
+    justify-self: start;
+}
+
+.header nav {
+    display: flex;
+    gap: 30px;
+}
+
+.header nav a {
+    text-decoration: none;
+    color: #0f4754;
+    font-size: 19px;
+}
+
+.botao {
+    background-color: #1B778C;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.botao:hover {
+    background-color: #339ab1;
+}
+
+.botoes {
+    justify-self: end;
+    display: flex;
+    gap: 10px;
+}
+
+.petalas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.petala {
+    position: absolute;
+    top: -20px;
+    width: 10px;
+    height: 14px;
+    background: white;
+    border-radius: 70% 0 70% 0;
+    opacity: 0.75;
+    animation: cai linear infinite;
+}
+
+@keyframes cai {
+    to {
+        transform: translate(70px, 108vh) rotate(540deg);
+    }
+}
+
+.cartao {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    max-width: 980px;
+    min-height: 580px;
+    background-color: rgba(14, 22, 26, 0.78);
+    border: 1px solid rgba(127, 208, 230, 0.28);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 40px 90px -30px rgba(31, 160, 212, 0.5);
+    backdrop-filter: blur(10px);
+    animation: entrar 1s ease both;
+}
+
+@keyframes entrar {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cartao.invertido {
+    flex-direction: row-reverse;
+}
+
+.imagem {
+    flex: 1.1;
+    display: flex;
+    align-items: flex-end;
+    padding: 36px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.imagem-frase {
+    max-width: 320px;
+    font-family: fantasy;
+    font-size: 38px;
+    font-weight: 100;
+    line-height: 1.15;
+    color: white;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
+}
+
+.imagem-login {
+    background-image:
+        linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 55%),
+        url("assets/ghibli-login.jpg"),
+        radial-gradient(circle at 30% 25%, rgba(127, 208, 230, 0.5), transparent 40%),
+        linear-gradient(to bottom, #0f4754, #1B778C 65%, #0b2f38);
+}
+
+.imagem-cadastro {
+    background-image:
+        linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 55%),
+        url("assets/ghibli-login.jpg"),
+        radial-gradient(circle at 70% 25%, rgba(127, 208, 230, 0.5), transparent 40%),
+        linear-gradient(to bottom, #0b2f38, #1B778C 60%, #0f4754);
+}
+
+.formulario {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 56px 48px;
+}
+
+.formulario h2 {
+    margin-bottom: 10px;
+    font-family: fantasy;
+    font-size: 44px;
+    font-weight: 100;
+    line-height: 1.1;
+    color: white;
+}
+
+.subtitulo {
+    margin-bottom: 28px;
+    color: #9fc9d4;
+    line-height: 1.5;
+}
+
+.input_div {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #7fd0e6;
+}
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(127, 208, 230, 0.35);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    background-color: rgba(255, 255, 255, 0.07);
+    color: white;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+input:focus {
+    outline: none;
+    border-color: #7fd0e6;
+    box-shadow: 0 0 0 4px rgba(127, 208, 230, 0.18);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 6px;
+    border: none;
+    border-radius: 12px;
+    background-color: #1B778C;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 12px 28px -12px rgba(31, 160, 212, 0.9);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #339ab1;
+    transform: translateY(-2px);
+}
+
+.mensagem {
+    min-height: 24px;
+    margin-top: 16px;
+    font-weight: 600;
+    color: #ffb48f;
+}
+
+.link {
+    margin-top: 18px;
+    font-size: 14px;
+    color: #9fc9d4;
+}
+
+.link a {
+    color: #7fd0e6;
+    font-weight: 600;
+}
+
+.personagem {
+    position: fixed;
+    left: 18px;
+    bottom: 14px;
+    width: 120px;
+    z-index: 5;
+    pointer-events: none;
+    animation: flutuar 3.4s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-14px) rotate(2deg);
+    }
+}
+
+@media (max-width: 720px) {
+
+    .cartao,
+    .cartao.invertido {
+        flex-direction: column;
+    }
+
+    .imagem {
+        flex: none;
+        min-height: 220px;
+        padding: 24px;
+    }
+
+    .imagem-frase {
+        font-size: 30px;
+    }
+
+    .formulario {
+        padding: 36px 26px;
+    }
+}
